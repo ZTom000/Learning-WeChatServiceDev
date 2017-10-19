@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lwcsd.model.AccessToken;
+import com.lwcsd.util.AccessTokenUtil;
 import com.lwcsd.util.CheckUtil;
 
 
-@WebServlet("/WeChatConfrim")
+@WebServlet("/wechatconfrim")
 public class WeChatConfrim extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,6 +23,7 @@ public class WeChatConfrim extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
         String signature = request.getParameter("signature");
         
         String timestamp = request.getParameter("timestamp");
@@ -30,10 +33,10 @@ public class WeChatConfrim extends HttpServlet {
         String echostr = request.getParameter("echostr");
  
         PrintWriter out = response.getWriter();
+        
         if(CheckUtil.checkSignature(signature, timestamp, nonce)){
             out.print(echostr);
         }
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

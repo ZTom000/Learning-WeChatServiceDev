@@ -7,10 +7,10 @@ import java.util.Arrays;
 
 public class CheckUtil {
 	 
-    private static final String token = "nifury";
+    private static final String TOKEN = "ZTomwcsd";
  
     public static boolean checkSignature(String signature,String timestamp,String nonce){
-        String[] arr = new String[]{token,timestamp,nonce};
+        String[] arr = new String[]{TOKEN,timestamp,nonce};
         //排序
         Arrays.sort(arr);
  
