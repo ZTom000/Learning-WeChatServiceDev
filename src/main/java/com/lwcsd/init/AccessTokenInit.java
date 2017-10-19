@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.lwcsd.model.AccessToken;
 import com.lwcsd.util.AccessTokenUtil;
+import com.lwcsd.util.MenuUtil;
 
 @Component
 public class AccessTokenInit {
@@ -14,8 +15,10 @@ public class AccessTokenInit {
 
 		AccessToken at = new AccessToken();
 		at = AccessTokenUtil.getAccessToken();
+		MenuUtil menu = new MenuUtil();
 		if(at != null) {
-			System.out.println(at.toString());
+			menu.setAccessToken(at);
+			menu.createMenu();
 		}
 	}
 
